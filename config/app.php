@@ -60,7 +60,7 @@ return [
     |
     */
 
-    'timezone' => 'Asia/Shanghai',
+    'timezone' => env('TIME_ZONE', 'America/Denver'),
 
     /*
     |--------------------------------------------------------------------------

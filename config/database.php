@@ -1,5 +1,8 @@
 <?php
 
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+
 /*
  * This file is part of Hifone.
  *
@@ -73,6 +76,20 @@ return [
             'prefix'    => env('DB_PREFIX', null),
             'strict'    => false,
             'engine'    => null,
+        ],
+
+        'heroku' => [
+            'driver'   => 'mysql',
+            'host'     => $url["host"],
+            'port' => env('DB_PORT', '3306'),
+            'database' => substr($url["path"], 1),
+            'username' => $url["user"],
+            'password' => $url["pass"],
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => '',
+            'strict' => true,
+            'engine' => null,
         ],
 
         'pgsql' => [
